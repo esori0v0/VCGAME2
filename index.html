@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>점프 타이밍 게임</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-wrap">
+    <section class="title-area">
+      <h1>점프 타이밍 게임</h1>
+      <p>장애물이 다가오면 화면을 터치해서 점프하세요.</p>
+    </section>
+
+    <section class="hud" aria-label="게임 정보">
+      <div>점수: <strong id="score">0</strong></div>
+      <div>목표: <strong id="goalScore">15</strong></div>
+      <div>단계: <strong id="stageText">1단계</strong></div>
+      <div>생명: <strong id="lifeText">♥♥♥</strong></div>
+      <div>최고점수: <strong id="bestScore">0</strong></div>
+      <div>상태: <strong id="gameStatus">대기 중</strong></div>
+      <button id="pauseButton" class="hud-button" type="button">일시정지</button>
+    </section>
+
+    <section id="game" class="game" aria-label="점프 타이밍 게임 화면">
+      <div class="sky-text">TAP / SPACE</div>
+      <div id="player" class="player">
+        <div class="stage-hat sprout-hat" aria-hidden="true">
+          <span class="sprout-stem"></span>
+          <span class="sprout-leaf sprout-left"></span>
+          <span class="sprout-leaf sprout-right"></span>
+        </div>
+        <div class="stage-hat flower-hat" aria-hidden="true">
+          <span class="flower-stem"></span>
+          <span class="flower-leaf flower-leaf-left"></span>
+          <span class="flower-leaf flower-leaf-right"></span>
+          <span class="flower-head">
+            <span class="petal petal-1"></span>
+            <span class="petal petal-2"></span>
+            <span class="petal petal-3"></span>
+            <span class="petal petal-4"></span>
+            <span class="petal petal-5"></span>
+            <span class="flower-center"></span>
+          </span>
+        </div>
+        <div class="stage-hat tree-hat" aria-hidden="true">
+          <span class="tree-trunk"></span>
+          <span class="tree-crown crown-left"></span>
+          <span class="tree-crown crown-center"></span>
+          <span class="tree-crown crown-right"></span>
+        </div>
+      </div>
+      <div id="obstacle" class="obstacle"></div>
+      <div id="medkit" class="medkit hidden" aria-label="구급상자">+</div>
+      <div id="effectText" class="effect-text hidden"></div>
+      <div id="invincibleTimer" class="invincible-timer hidden">무적 5.0초</div>
+      <div id="pausePanel" class="pause-panel hidden">
+        <h2>일시정지</h2>
+        <p>P 또는 ESC로 계속할 수 있습니다.</p>
+        <button id="resumeButton" type="button">계속하기</button>
+      </div>
+      <div class="ground"></div>
+
+      <div id="startPanel" class="start-panel">
+        <h2>게임 시작</h2>
+        <p>각 단계는 0점부터 시작합니다. 1단계 15점, 2단계 30점, 3단계 45점을 달성하세요. 생명은 단계마다 3개이며, 구급상자는 단계마다 최대 3번 등장합니다.</p>
+        <button id="startButton" type="button">시작하기</button>
+      </div>
+
+      <div id="gameOverPanel" class="game-over-panel hidden">
+        <h2>게임 오버</h2>
+        <p>최종 점수: <strong id="finalScore">0</strong></p>
+
+        <form id="loseRankForm" class="rank-form">
+          <label for="loseNicknameInput">닉네임 남기기</label>
+          <div class="rank-input-row">
+            <input id="loseNicknameInput" type="text" maxlength="10" placeholder="닉네임 입력" autocomplete="off" />
+            <button id="saveLoseRankButton" type="submit">등록</button>
+          </div>
+          <p id="loseRankMessage" class="rank-message"></p>
+        </form>
+
+        <button id="restartButton" type="button">다시 시작</button>
+      </div>
+
+      <div id="stageClearPanel" class="stage-clear-panel hidden">
+        <h2 id="stageClearTitle">1단계 클리어</h2>
+        <p id="stageClearMessage">다음 단계로 이동합니다.</p>
+        <button id="nextStageButton" type="button">다음 단계 시작</button>
+      </div>
+
+      <div id="winPanel" class="win-panel hidden">
+        <h2>승리!</h2>
+        <p>3단계 최종 목표 <strong id="winScore">45</strong>점을 달성했습니다!</p>
+
+        <form id="rankForm" class="rank-form">
+          <label for="nicknameInput">닉네임 남기기</label>
+          <div class="rank-input-row">
+            <input id="nicknameInput" type="text" maxlength="10" placeholder="닉네임 입력" autocomplete="off" />
+            <button id="saveRankButton" type="submit">등록</button>
+          </div>
+          <p id="rankMessage" class="rank-message"></p>
+        </form>
+
+        <button id="winRestartButton" type="button">다시 시작</button>
+      </div>
+    </section>
+
+    <section class="ranking-board">
+      <div class="ranking-title-row">
+        <h2>랭킹 TOP 10</h2>
+        <button id="clearRankButton" class="small-button" type="button">랭킹 초기화</button>
+      </div>
+      <ol id="rankingList" class="ranking-list">
+        <li class="empty-rank">아직 등록된 기록이 없습니다.</li>
+      </ol>
+    </section>
+
+    <section class="guide">
+      <h2>조작법</h2>
+      <p><strong>화면 터치</strong>, <strong>스페이스바</strong>, <strong>위 방향키</strong>로 점프합니다. 길게 누르면 더 높이 점프합니다. 구급상자는 하트 1개를 회복하고, 하트가 가득 찬 상태에서는 5초 무적을 줍니다.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
