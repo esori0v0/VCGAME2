@@ -1,0 +1,26 @@
+{
+  "name": "점프 타이밍 게임",
+  "short_name": "점프게임",
+  "description": "장애물을 타이밍에 맞춰 뛰어넘고 점수를 쌓는 모바일 친화 점프 게임입니다.",
+  "lang": "ko",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#dff4ff",
+  "theme_color": "#8ed8ff",
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
