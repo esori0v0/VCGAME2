@@ -28,6 +28,14 @@ body {
   margin-bottom: 16px;
 }
 
+.game-icon {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 10px;
+  filter: drop-shadow(0 5px 0 #222);
+}
+
 .title-area h1 {
   margin: 0 0 8px;
   font-size: 36px;
@@ -561,6 +569,12 @@ button:hover {
 
   .title-area {
     margin-bottom: 12px;
+  }
+
+  .game-icon {
+    width: 58px;
+    height: 58px;
+    margin-bottom: 8px;
   }
 
   .title-area h1 {

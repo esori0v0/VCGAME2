@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Jump game icon</title>
+  <desc id="desc">A cheerful yellow jumping character over a red obstacle.</desc>
+  <rect width="128" height="128" rx="28" fill="#8ed8ff"/>
+  <path d="M12 94h104v22H12z" fill="#79c767"/>
+  <path d="M12 94h104" fill="none" stroke="#222" stroke-width="6" stroke-linecap="round"/>
+  <rect x="82" y="61" width="24" height="35" rx="6" fill="#e94b35" stroke="#222" stroke-width="6"/>
+  <g transform="rotate(-9 55 59)">
+    <rect x="33" y="36" width="44" height="44" rx="13" fill="#ffcc33" stroke="#222" stroke-width="6"/>
+    <circle cx="62" cy="55" r="4" fill="#222"/>
+    <path d="M47 80l-8 15" fill="none" stroke="#222" stroke-width="6" stroke-linecap="round"/>
+    <path d="M65 80l8 15" fill="none" stroke="#222" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  <path d="M52 31c-1-9 4-16 13-20" fill="none" stroke="#3f9b44" stroke-width="6" stroke-linecap="round"/>
+  <path d="M66 12c9 0 15 5 17 13-10 1-17-2-21-9 1-2 2-3 4-4z" fill="#7ed957" stroke="#222" stroke-width="5" stroke-linejoin="round"/>
+</svg>
